@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Basics</title>
+
+  <style>
+
+    .js-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .card  {
+      margin: 10px;
+      background: #333;
+      border-radius: 10px;
+      width: 300px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function ProductDetails({ product, price, discountPrice, imageSrc }) {
+      return (
+        <div className="card">
+
+          <img src={imageSrc} width="80" />
+          <p>{product}</p>
+
+          {discountPrice ?
+            <>
+              <del>Price: ${price}</del>
+              <p>Discount price: ${price - discountPrice}</p>
+            </>
+
+            : <p>Price: ${price}</p>}
+
+          <button>Add to Cart</button>
+        </div>
+      )
+    }
+
+    function App() {
+      return (
+        <>
+          <ProductDetails
+            product="Cotton socks"
+            price="10.90"
+            discountPrice="5.45"
+            imageSrc="./img/cotton-socks.png"
+          />
+
+          <ProductDetails
+            product="Tennis balls"
+            price="6.00"
+            imageSrc="./img/tennis-balls.png"
+          />
+
+          <ProductDetails
+            product="Plain T-Shirt"
+            price="7.99"
+            imageSrc="./img/plain-t-shirt.png" />
+        </>
+      )
+    }
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>
