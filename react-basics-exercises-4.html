@@ -14,22 +14,23 @@
   <script src="https://unpkg.com/supersimpledev/babel.js"></script>
   <script type="text/babel">
 
-    function LoginForm() {
+    function CounterButton({count, setCount}) {
       return (
-        <>
-          <div><input type="text" placeholder="Email" /></div>
-          <div><input type="password" placeholder="Password" /></div>
-          <button>Login</button>
-          <button>Sign up</button>
-        </>
-      )
+        <button onClick={() => setCount(count + 1)}>
+          Clicked {count} {count === 1 ? "time" : "times"}
+        </button>)
     }
 
+
     function App() {
+
+      const [count, setCount] = React.useState(0);
+
       return (
         <>
-          <p>Hello, welcome to my website</p>
-          <LoginForm />
+          <CounterButton count={count} setCount={setCount}/>
+          <CounterButton count={count} setCount={setCount}/>
+          <button onClick={() => setCount(0)}>Reset</button>
         </>
       )
     }
