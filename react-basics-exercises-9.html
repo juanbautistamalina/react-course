@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Excercises</title>
+
+  <style>
+
+    body {
+      background-color: rgb(222, 222, 222);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    button {
+      background-color: rgb(25, 135, 84);
+      padding: 1em;
+      margin: 1em;
+      border: none;
+      border-radius: 1px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function App() {
+
+      const [count, setCount] = React.useState(0);
+      const autoclickButtonRef = React.useRef(null)
+
+      function reset() {
+        setCount(0);
+      }
+
+      function autoClick() {
+        setInterval(() => {
+          const buttonElem = autoclickButtonRef.current;
+          if (buttonElem) {
+            buttonElem.click()
+          }
+        }, 1000)
+      }
+
+
+      return (
+        <>
+          <button
+            ref={autoclickButtonRef}
+            onClick={() => setCount(count + 1)}>
+            Clicked {count} {count === 1 ? "time" : "times"}
+          </button>
+
+          <button onClick={reset}>Reset</button>
+          <button onClick={autoClick} >Auto Click</button>
+        </>
+      )
+    }
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>
