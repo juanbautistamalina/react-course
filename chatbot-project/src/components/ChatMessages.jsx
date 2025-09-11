@@ -11,7 +11,12 @@ export default function ChatMessages({ chatMessages }) {
             {chatMessages.length === 0 ?
                 <p className="welcome-message">Welcome to the chatbot project! Send a message using the textbox below.</p>
                 :
-                chatMessages.map(chatMessage => <ChatMessage message={chatMessage.message} sender={chatMessage.sender} key={chatMessage.id} />)
+                chatMessages.map(chatMessage =>
+                    <ChatMessage
+                        message={chatMessage.message}
+                        sender={chatMessage.sender}
+                        time={chatMessage.time}
+                        key={chatMessage.id} />)
             }
         </div>
     )
