@@ -6,7 +6,12 @@ import './App.css'
 
 function App() {
 
-  const [chatMessages, setChatMessages] = useState([]);
+  const [chatMessages, setChatMessages] = useState(JSON.parse(localStorage.getItem("messages")) || "");
+
+  useEffect(() => {
+    const memory = localStorage.setItem("messages", JSON.stringify(chatMessages));
+  }, [chatMessages])
+
 
   useEffect(() => {
     const value = Chatbot.addResponses({
@@ -15,7 +20,10 @@ function App() {
         return `Bien. Aquí tienes un ID único: ${crypto.randomUUID()}`;
       }
     });
+
+
   }, [])
+
 
   return (
     <div className="app-container">
