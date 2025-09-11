@@ -1,26 +1,10 @@
-import { useEffect, useRef } from 'react'
 import ChatMessage from "./ChatMessage"
+import useAutoScroll from '../hooks/useAutoScroll';
 import "./ChatMessages.css"
-
-// Custom Hook
-function useAutoScroll(dependencies) {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const containerElem = containerRef.current;
-        if (containerElem) {
-            containerElem.scrollTop = containerElem.scrollHeight
-        }
-
-    }, dependencies);
-
-    return containerRef;
-}
-
 
 export default function ChatMessages({ chatMessages }) {
 
-    const chatMessagesRef = useAutoScroll([chatMessages]);
+    const chatMessagesRef = useAutoScroll(chatMessages);
 
     return (
         <div className="chat-messages-container" ref={chatMessagesRef}>
