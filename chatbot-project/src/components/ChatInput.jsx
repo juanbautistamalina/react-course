@@ -4,7 +4,7 @@ import { Chatbot } from "supersimpledev"
 import LoadingSpinner from "../assets/loading-spinner.gif"
 import "./ChatInput.css"
 
-export default function ChatInput({ chatMessages, setChatMessages }) {
+export default function ChatInput({ chatMessages, setChatMessages,  }) {
 
     const [inputText, setInputText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +61,10 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
         setIsLoading(false);
     }
 
+    const clearMessages = () => {
+        setChatMessages([])
+    }
+
 
     return (
         <div className="chat-input-container">
@@ -72,6 +76,7 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
                 onKeyDown={isLoading ? "" : enterKey}
                 value={inputText} />
             <button className="send-button" onClick={sendMessage}>Send</button>
+            <button className="clear-button" onClick={clearMessages}>Clear</button>
         </div>
     )
 }
