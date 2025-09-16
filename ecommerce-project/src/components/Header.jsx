@@ -1,5 +1,9 @@
 import { NavLink } from "react-router"
 import "./Header.css"
+import logoWhiteImage from "../assets/images/logo-white.png"
+import mobileLogoWhiteImage from "../assets/images/mobile-logo-white.png"
+import searchIcon from "../assets/images/icons/search-icon.png"
+import cartIcon from "../assets/images/icons/cart-icon.png"
 
 export default function Header() {
     return (
@@ -7,9 +11,9 @@ export default function Header() {
             <div className="left-section">
                 <NavLink to="/" className="header-link">
                     <img className="logo"
-                        src="images/logo-white.png" />
+                        src={logoWhiteImage} />
                     <img className="mobile-logo"
-                        src="images/mobile-logo-white.png" />
+                        src={mobileLogoWhiteImage} />
                 </NavLink>
             </div>
 
@@ -17,18 +21,17 @@ export default function Header() {
                 <input className="search-bar" type="text" placeholder="Search" />
 
                 <button className="search-button">
-                    <img className="search-icon" src="images/icons/search-icon.png" />
+                    <img className="search-icon" src={searchIcon} />
                 </button>
             </div>
 
             <div className="right-section">
                 <NavLink className="orders-link header-link" to="/orders">
-
                     <span className="orders-text">Orders</span>
                 </NavLink>
 
                 <NavLink className="cart-link header-link" to="/checkout">
-                    <img className="cart-icon" src="images/icons/cart-icon.png" />
+                    <img className="cart-icon" src={cartIcon} />
                     <div className="cart-quantity">3</div>
                     <div className="cart-text">Cart</div>
                 </NavLink>

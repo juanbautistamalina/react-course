@@ -1,0 +1,13 @@
+.not-found-page {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.not-found-title {
+    color: black;
+    font-size: 2rem;
+    /* flex-grow: 1; */
+}
