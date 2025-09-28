@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Excercises</title>
+
+  <style>
+
+    body {
+      font-family: "Arial";
+    }
+
+    p {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    input {
+      padding: 0.5em;
+      margin-bottom: 1em;
+      border-radius: 5px;
+      border: 1px solid #666;
+    }
+
+    .button-form {
+      background-color: rgb(0, 123, 255);
+      padding: 1em;
+      border: none;
+      margin-right: 0.5em;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .button-hide {
+      margin: 1em;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function LoginForm() {
+
+      const [showPassword, setShowPassword] = React.useState(false);
+
+      return (
+        <>
+          <div><input type="text" placeholder="Email" /></div>
+          <div>
+            <input type={showPassword ? "text" : "password"} placeholder="Password" />
+            <button onClick={() => setShowPassword(!showPassword)} className="button-hide">Hide</button>
+            </div>
+          <button className="button-form">Login</button>
+          <button className="button-form">Sign up</button>
+        </>
+      )
+    }
+
+    function App() {
+      return (
+        <>
+          <p>Hello, welcome to my website</p>
+          <LoginForm />
+        </>
+      )
+    }
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>
